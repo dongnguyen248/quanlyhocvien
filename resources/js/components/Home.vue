@@ -9,7 +9,7 @@
                         <!-- small box -->
                         <div class="small-box bg-info">
                             <div class="inner">
-                                <h3>150</h3>
+                                <h3>{{}}</h3>
 
                                 <p>Danh Sách Học Viên</p>
                             </div>
@@ -78,9 +78,28 @@
 <script>
 export default {
     name: "home",
-    computed: {},
+    data() {
+        return {
+            countcustomers: 0,
+        }
+    },
+    computed: {
+        //  customers() {
+        //      var all = this.$store.getters.customers;
+        //      console.log(all);
+        //     return all;
+        // },
+    },
     methods: {
-      
+      allCustomers(){
+          axios.get("api/customers").then(respones=>{
+              console.log(respones.data.customers);
+          })
+      }
+    },
+    mounted() {
+        this.allCustomers();
     }
+
 };
 </script>

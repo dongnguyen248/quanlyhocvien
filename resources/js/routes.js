@@ -12,7 +12,9 @@ import Fail from "./components/customers/Hocvienthirot.vue";
 const routes = [{
         path: "/",
         component: Home,
-
+        meta: {
+            requiresAuth: true //the route need authen -> need add meta
+        },
     },
     {
         path: "/login",

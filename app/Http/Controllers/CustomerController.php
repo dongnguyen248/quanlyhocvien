@@ -10,12 +10,12 @@ use Illuminate\Support\Facades\DB;
 class CustomerController extends Controller
 {
     //
+    
    
     public function all( Request $request)
     {
         $customers = Customer::all();
         if ( $request->input('client') ) {
-            dd($request->input('client'));
     	    return Customer::select('id','CodeCustomer','name','birthday','phone',
             'address','location','Type','Owner','Facebook','dukienthi',
             'createdBy','photo','email','school','first','datefirst','second',
@@ -28,6 +28,7 @@ class CustomerController extends Controller
         'datesecond','third','datethird','fourth','datefour','healthyMoney'];
 
         $length = $request->input('length');
+        // dd($length);
         $column = $request->input('column'); //Index
         $dir = $request->input('dir');
         $searchValue = $request->input('search');
@@ -123,20 +124,18 @@ class CustomerController extends Controller
     }
     public function new(Request $request)
     {
-        // dd($request['dayhealth']);
         $phone = $request['phone'];
-        // $code = $request['CodeCustomer'];
         $checkphone = DB::table('customers')->where('phone',$phone)->first();
-        // $checkcode = DB::table('customers')->where('CodeCustomer',$code)->first();
         $name =$request['name']; 
         $type = $request['type'];
-        if($type == 'B2'){
+        if($type === 'B2'){
             $totalMoney = 12000000;
-        }if($type=='C'){
+        }if($type === 'C'){
             $totalMoney = 15000000;
         }else{
             $totalMoney = 14000000;
         }
+        $needMoney = (int)$totalMoney - (int)$request['first'] - (int)$request['second'] -(int)$request['thirddday']-(int)$request['fourday'];
         if($checkphone == null){
             if($request->file('image') != null){
                 $photoName = $name.'.'.$request->file('image')->extension();
@@ -166,7 +165,9 @@ class CustomerController extends Controller
                     "datefour"=>$request['fourday'],
                     'dayhealth'=>$request['dayhealth'],
                     "healthyMoney"=>$request['healthyMoney'],
-                    "totalMoney"=>$totalMoney
+                    "totalMoney"=>$totalMoney,
+                    "needMoney"=> $needMoney
+
                 ]);
                 return response()->json(['customer' => $customer], 200);
             }else{
@@ -195,6 +196,8 @@ class CustomerController extends Controller
                     "datefour"=>$request['fourday'],
                     'dayhealth'=>$request['dayhealth'],
                     "healthyMoney"=>$request['healthyMoney'],
+                    "totalMoney"=>$totalMoney,
+                    "needMoney"=> $needMoney
 
                 ]);
                

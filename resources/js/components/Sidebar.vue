@@ -40,7 +40,7 @@
                     </router-link>
                 </li>
                 <li class="nav-item">
-                    <router-link to="/customers/hocvienthidau" class="nav-link">
+                    <router-link to="/customers/hocvienthirot" class="nav-link">
                         <i class="fas fa-user-times"></i>
                         <p>
                             Học Viên Thi Rớt

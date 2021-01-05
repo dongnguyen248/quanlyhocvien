@@ -90,7 +90,7 @@
                 </tr>
                 <tr>
                     <th>Học phí lần 2</th>
-                    <td>{{ customer.second }}</td>
+                    <td>{{ customer.second | numFormat}}</td>
                 </tr>
                 <tr>
                     <th>Ngày đóng lần 2</th>
@@ -98,7 +98,7 @@
                 </tr>
                 <tr>
                     <th>Học phí lần 3</th>
-                    <td>{{ customer.moneythird }}</td>
+                    <td>{{ customer.moneythird | numFormat}}</td>
                 </tr>
                 <tr>
                     <th>Ngày đóng lần 3</th>
@@ -106,7 +106,7 @@
                 </tr>
                 <tr>
                     <th> Đóng phí lần 4</th>
-                    <td>{{ customer.moneyfour }}</td>
+                    <td>{{ customer.moneyfour | numFormat}}</td>
                 </tr>
                 <tr>
                     <th>Ngày đóng lần 4</th>
@@ -115,7 +115,7 @@
                 <tr>
                     <th>Tiền sức khỏe</th>
                     <td class="text-center">
-                        {{customer.healthyMoney}}
+                        {{customer.healthyMoney | numFormat}}
                     </td>
                 </tr>
                 <tr>
@@ -128,7 +128,7 @@
             </table>
         </div>
         <div class="tab-pane fade" :class="{ 'active show': isActive('need') }" id="need">
-           <p>Học Phí Cần thanh toán: {{customer.needMoney | numFormat('0.000')}}</p>
+           <p>Học Phí Cần thanh toán: {{customer.needMoney |  numFormat}}</p>
            <p>Trạng thái thi cử : {{customer.statusExam}}</p>
         </div>
 
@@ -177,17 +177,8 @@ export default {
         },
 
     },
-    mounted() {
-        this.getHistoryMoney();
-    },
+ 
     methods: {
-        async getHistoryMoney() {
-            const res = this.callApi('get', '../history');
-            if (res == 200) {
-                console.log(res);
-                this.money = res.data;
-            }
-        },
 
         isActive(menuItem) {
             return this.activeItem === menuItem
