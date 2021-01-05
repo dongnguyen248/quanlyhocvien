@@ -79,7 +79,7 @@
             <table class="table">
                 <tr>
                     <th>Học phí lần 1</th>
-                    <td>{{ customer.first }}</td>
+                    <td>{{ customer.first | numFormat}}</td>
 
                 </tr>
                 <tr>
@@ -128,7 +128,7 @@
             </table>
         </div>
         <div class="tab-pane fade" :class="{ 'active show': isActive('need') }" id="need">
-           <p>Học Phí Cần thanh toán: {{customer.needMoney}}</p>
+           <p>Học Phí Cần thanh toán: {{customer.needMoney | numFormat('0.000')}}</p>
            <p>Trạng thái thi cử : {{customer.statusExam}}</p>
         </div>
 
