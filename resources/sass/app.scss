@@ -1,0 +1,57 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+// Variables
+@import 'variables';
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+$fa-font-path: "~@fortawesome/fontawesome-free/webfonts";
+// Bootstrap
+@import "~bootstrap/scss/bootstrap";
+@import "~admin-lte/dist/css/adminlte";
+// font awesome
+// @import "~@fortawesome/fontawesome-free/scss/fontawesome.scss";
+// @import "~@fortawesome/fontawesome-free/scss/solid.scss";
+// @import "~@fortawesome/fontawesome-free/scss/brands.scss";
+@import "~@fortawesome/fontawesome-free/scss/fontawesome";
+@import "~@fortawesome/fontawesome-free/scss/brands";
+@import "~@fortawesome/fontawesome-free/scss/regular";
+@import "~@fortawesome/fontawesome-free/scss/solid";
+.main-sidebar {
+    background-color: #3445b4;
+}
+
+thead {
+    tr {
+        background-color: #26a96a;
+    }
+}
+
+.select select {
+    display: inline-block !important;
+}
+
+.projects {
+    margin: 0 auto;
+    .tableFilters {
+        margin-bottom: 10px;
+        input {
+            width: 175px;
+            display: inline-block !important;
+        }
+        .control {
+            float: right;
+        }
+    }
+    .table {
+        width: 100%;
+        .sorting {
+            text-align: center !important;
+        }
+        .sorting_asc {
+            text-align: center !important;
+        }
+        .sorting_desc {
+            text-align: center !important;
+        }
+    }
+}
