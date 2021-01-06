@@ -2126,18 +2126,27 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "home",
-  // props:['customers'],
+  name: "Home",
   data: function data() {
     return {
-      countcustomers: 0
+      countcustomers: 0,
+      successfull: 0
     };
   },
-  computed: {//  customers() {
-    //      var all = this.$store.getters.customers;
-    //      console.log(all);
-    //     return all;
-    // },
+  methods: {
+    getAllCustomers: function getAllCustomers() {
+      var _this = this;
+
+      axios.get('api/customers/all').then(function (response) {
+        _this.countcustomers = response.data.customer.length;
+        _this.successfull = response.data.hocviendau.length;
+        _this.failTheory = response.data.rotlythuyet.length;
+        _this.failPractice = response.data.rotthuchanh.length;
+      });
+    }
+  },
+  mounted: function mounted() {
+    this.getAllCustomers();
   }
 });
 
@@ -68942,9 +68951,13 @@ var render = function() {
                 "div",
                 { staticClass: "small-box bg-info" },
                 [
-                  _vm._m(0),
+                  _c("div", { staticClass: "inner" }, [
+                    _c("h3", [_vm._v(_vm._s(_vm.countcustomers))]),
+                    _vm._v(" "),
+                    _c("p", [_vm._v("Danh Sách Học Viên")])
+                  ]),
                   _vm._v(" "),
-                  _vm._m(1),
+                  _vm._m(0),
                   _vm._v(" "),
                   _c(
                     "router-link",
@@ -68967,9 +68980,13 @@ var render = function() {
                 "div",
                 { staticClass: "small-box bg-success" },
                 [
-                  _vm._m(2),
+                  _c("div", { staticClass: "inner" }, [
+                    _c("h3", [_vm._v(_vm._s(_vm.successfull))]),
+                    _vm._v(" "),
+                    _c("p", [_vm._v("Học Viên Thi Đậu")])
+                  ]),
                   _vm._v(" "),
-                  _vm._m(3),
+                  _vm._m(1),
                   _vm._v(" "),
                   _c(
                     "router-link",
@@ -68992,9 +69009,13 @@ var render = function() {
                 "div",
                 { staticClass: "small-box bg-warning" },
                 [
-                  _vm._m(4),
+                  _c("div", { staticClass: "inner" }, [
+                    _c("h3", [_vm._v(_vm._s(_vm.failTheory))]),
+                    _vm._v(" "),
+                    _c("p", [_vm._v("Học Viên Thi Rớt Lý Thuyết")])
+                  ]),
                   _vm._v(" "),
-                  _vm._m(5),
+                  _vm._m(2),
                   _vm._v(" "),
                   _c(
                     "router-link",
@@ -69017,9 +69038,13 @@ var render = function() {
                 "div",
                 { staticClass: "small-box bg-danger" },
                 [
-                  _vm._m(6),
+                  _c("div", { staticClass: "inner" }, [
+                    _c("h3", [_vm._v(_vm._s(_vm.failPractice))]),
+                    _vm._v(" "),
+                    _c("p", [_vm._v("Học Viên Thi Rớt Thực Hành")])
+                  ]),
                   _vm._v(" "),
-                  _vm._m(7),
+                  _vm._m(3),
                   _vm._v(" "),
                   _c(
                     "router-link",
@@ -69044,9 +69069,9 @@ var render = function() {
                 "div",
                 { staticClass: "small-box bg-success" },
                 [
-                  _vm._m(8),
+                  _vm._m(4),
                   _vm._v(" "),
-                  _vm._m(9),
+                  _vm._m(5),
                   _vm._v(" "),
                   _c(
                     "router-link",
@@ -69069,9 +69094,9 @@ var render = function() {
                 "div",
                 { staticClass: "small-box bg-danger" },
                 [
-                  _vm._m(10),
+                  _vm._m(6),
                   _vm._v(" "),
-                  _vm._m(11),
+                  _vm._m(7),
                   _vm._v(" "),
                   _c(
                     "router-link",
@@ -69099,28 +69124,8 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "inner" }, [
-      _c("h3", [_vm._v("150")]),
-      _vm._v(" "),
-      _c("p", [_vm._v("Danh Sách Học Viên")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
     return _c("div", { staticClass: "icon" }, [
       _c("i", { staticClass: "fas fa-users" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "inner" }, [
-      _c("h3", [_vm._v("53")]),
-      _vm._v(" "),
-      _c("p", [_vm._v("Học Viên Thi Đậu")])
     ])
   },
   function() {
@@ -69135,28 +69140,8 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "inner" }, [
-      _c("h3", [_vm._v("44")]),
-      _vm._v(" "),
-      _c("p", [_vm._v("Học Viên Thi Rớt Lý Thuyết")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
     return _c("div", { staticClass: "icon" }, [
       _c("i", { staticClass: "fas fa-user-times" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "inner" }, [
-      _c("h3", [_vm._v("65")]),
-      _vm._v(" "),
-      _c("p", [_vm._v("Học Viên Thi Rớt Thực Hành")])
     ])
   },
   function() {
@@ -92873,12 +92858,9 @@ var user = Object(_helper_auth__WEBPACK_IMPORTED_MODULE_1__["getLocalUser"])();
       state.currentUser = null;
     },
     updateCustomer: function updateCustomer(state, payload) {
-      console.log(payload);
       state.customers = payload;
-    },
-    updatecountCustomer: function updatecountCustomer(state, payload) {
-      console.log(payload);
       state.countCustomer = payload.length;
+      console.log(payload.length);
     }
   },
   actions: {
@@ -92886,7 +92868,7 @@ var user = Object(_helper_auth__WEBPACK_IMPORTED_MODULE_1__["getLocalUser"])();
       context.commit("login");
     },
     getCustomers: function getCustomers(context) {
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/customers").then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/customers/all").then(function (response) {
         context.commit("updateCustomer", response.data.customers);
       });
     }

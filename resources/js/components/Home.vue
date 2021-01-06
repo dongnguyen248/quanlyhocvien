@@ -9,7 +9,7 @@
                         <!-- small box -->
                         <div class="small-box bg-info">
                             <div class="inner">
-                                <h3>150</h3>
+                                <h3>{{countcustomers}}</h3>
 
                                 <p>Danh Sách Học Viên</p>
                             </div>
@@ -24,7 +24,7 @@
                         <!-- small box -->
                         <div class="small-box bg-success">
                             <div class="inner">
-                                <h3>53</h3>
+                                <h3>{{successfull}}</h3>
 
                                 <p>Học Viên Thi Đậu</p>
                             </div>
@@ -40,7 +40,7 @@
                         <!-- small box -->
                         <div class="small-box bg-warning">
                             <div class="inner">
-                                <h3>44</h3>
+                                <h3>{{failTheory}}</h3>
 
                                 <p>Học Viên Thi Rớt Lý Thuyết</p>
                             </div>
@@ -56,7 +56,7 @@
                         <!-- small box -->
                         <div class="small-box bg-danger">
                             <div class="inner">
-                                <h3>65</h3>
+                                <h3>{{failPractice}}</h3>
 
                                 <p>Học Viên Thi Rớt Thực Hành</p>
                             </div>
@@ -108,20 +108,26 @@
 
 <script>
 export default {
-    name: "home",
-    // props:['customers'],
+    name: "Home",
 
     data() {
         return {
             countcustomers: 0,
+            successfull: 0
         }
     },
-    computed: {
-        //  customers() {
-        //      var all = this.$store.getters.customers;
-        //      console.log(all);
-        //     return all;
-        // },
+    methods: {
+        getAllCustomers() {
+            axios.get('api/customers/all').then(response => {
+                this.countcustomers = response.data.customer.length;
+                this.successfull = response.data.hocviendau.length;
+                this.failTheory = response.data.rotlythuyet.length;
+                this.failPractice = response.data.rotthuchanh.length;
+            })
+        }
+    },
+    mounted() {
+        this.getAllCustomers();
     },
 
 };

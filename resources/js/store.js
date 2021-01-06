@@ -58,13 +58,11 @@ export default {
             state.currentUser = null;
         },
         updateCustomer(state, payload) {
-            console.log(payload)
             state.customers = payload;
-        },
-        updatecountCustomer(state,payload){
-            console.log(payload);
             state.countCustomer = payload.length;
-        }
+            console.log(payload.length)
+
+        },
 
     },
     actions: {
@@ -72,7 +70,7 @@ export default {
             context.commit("login");
         },
         getCustomers(context) {
-            axios.get("/api/customers").then(response => {
+            axios.get("/api/customers/all").then(response => {
                 context.commit("updateCustomer", response.data.customers);
             });
         }

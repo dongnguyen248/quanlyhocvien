@@ -10,7 +10,13 @@ use Illuminate\Support\Facades\DB;
 class CustomerController extends Controller
 {
     //
-    
+    public function index(){
+        $customers = Customer::all();
+        $hocvienthidau = DB::table('customers')->where('statusExam','Đậu')->get();
+        $rotlythuyet = DB::table('customers')->where('statusExam','Rớt lý thuyết')->get();
+        $rotthuchanh = DB::table('customers')->where('statusExam','Rớt thực hành')->get();
+        return response()->json(['customer'=>$customers,'hocviendau'=>$hocvienthidau,'rotlythuyet'=>$rotlythuyet,'rotthuchanh'=>$rotthuchanh]);
+    }
    
     public function all( Request $request)
     {

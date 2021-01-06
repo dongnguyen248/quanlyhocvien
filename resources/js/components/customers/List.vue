@@ -43,6 +43,7 @@ import Datatable from './Datatable.vue';
 import Pagination from './Pagination.vue';
 export default {
     name: "CustomersList",
+
     components: {
         datatable: Datatable,
         pagination: Pagination
