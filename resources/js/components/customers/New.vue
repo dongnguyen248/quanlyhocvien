@@ -244,23 +244,23 @@ export default {
     },
     methods: {
         dateformathealth(date){
-            this.customer.dayhealth = moment(date).format('L');
+            this.customer.dayhealth = moment(date).format('YYYY-MM-DD');
             return this.customer.dayhealth;
         },
         dateformatfirst(date) {
-            this.customer.datefirst = moment(date).format('L');
-            return this.customer.datefirst;
+            this.customer.datefirst = moment(date).format('YYYY-MM-DD');
+            return this.customer.datefirst.reverse();
         },
         dateformatsecond(date) {
-            this.customer.datesecond = moment(date).format('L');
+            this.customer.datesecond = moment(date).format('YYYY-MM-DD');
             return this.customer.datesecond;
         },
         dateformatthird(date) {
-            this.customer.datethird = moment(date).format('L');
+            this.customer.datethird = moment(date).format('YYYY-MM-DD');
             return this.customer.datethird;
         },
         dateformatfour(date) {
-            this.customer.datefour = moment(date).format('L');
+            this.customer.datefour = moment(date).format('YYYY-MM-DD');
             return this.customer.datefour;
         },
         isActive(menuItem) {
@@ -270,11 +270,11 @@ export default {
             this.activeItem = menuItem
         },
         datedukien(date) {
-            this.customer.dukienthi = moment(date).format("L");
+            this.customer.dukienthi = moment(date).format('YYYY-MM-DD');
             return this.customer.dukienthi;
         },
         customeDate(date) {
-            this.customer.birthday = moment(date).format("L");
+            this.customer.birthday = moment(date).format('YYYY-MM-DD');
             return this.customer.birthday;
         },
         chooseFile(event) {

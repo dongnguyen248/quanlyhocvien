@@ -276,24 +276,24 @@ export default {
     },
     methods: {
         dateformathealth(date) {
-            this.customer.dayhealth = moment(date).format('L');
+            this.customer.dayhealth = moment(date).format('YYYY-MM-DD');
             return this.customer.dayhealth;
         },
         dateformatfirst(date) {
-            this.customer.datefirst = moment(date).format('L');
+            this.customer.datefirst = moment(date).format('YYYY-MM-DD');
             // console.log(this.datefirst);
             return this.customer.datefirst;
         },
         dateformatsecond(date) {
-            this.customer.datesecond = moment(date).format('L');
+            this.customer.datesecond = moment(date).format('YYYY-MM-DD');
             return this.customer.datesecond;
         },
         dateformatthird(date) {
-            this.customer.datethird = moment(date).format('L');
+            this.customer.datethird = moment(date).format('YYYY-MM-DD');
             return this.customer.datethird;
         },
         dateformatfour(date) {
-            this.customer.datefour = moment(date).format('L');
+            this.customer.datefour = moment(date).format('YYYY-MM-DD');
             return this.customer.datefour;
         },
         isActive(menuItem) {

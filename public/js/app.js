@@ -2094,8 +2094,40 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "home",
+  // props:['customers'],
   data: function data() {
     return {
       countcustomers: 0
@@ -2106,16 +2138,6 @@ __webpack_require__.r(__webpack_exports__);
     //      console.log(all);
     //     return all;
     // },
-  },
-  methods: {
-    allCustomers: function allCustomers() {
-      axios.get("api/customers").then(function (respones) {
-        console.log(respones.data.customers);
-      });
-    }
-  },
-  mounted: function mounted() {
-    this.allCustomers();
   }
 });
 
@@ -2711,24 +2733,24 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   methods: {
     dateformathealth: function dateformathealth(date) {
-      this.customer.dayhealth = moment__WEBPACK_IMPORTED_MODULE_3___default()(date).format('L');
+      this.customer.dayhealth = moment__WEBPACK_IMPORTED_MODULE_3___default()(date).format('YYYY-MM-DD');
       return this.customer.dayhealth;
     },
     dateformatfirst: function dateformatfirst(date) {
-      this.customer.datefirst = moment__WEBPACK_IMPORTED_MODULE_3___default()(date).format('L'); // console.log(this.datefirst);
+      this.customer.datefirst = moment__WEBPACK_IMPORTED_MODULE_3___default()(date).format('YYYY-MM-DD'); // console.log(this.datefirst);
 
       return this.customer.datefirst;
     },
     dateformatsecond: function dateformatsecond(date) {
-      this.customer.datesecond = moment__WEBPACK_IMPORTED_MODULE_3___default()(date).format('L');
+      this.customer.datesecond = moment__WEBPACK_IMPORTED_MODULE_3___default()(date).format('YYYY-MM-DD');
       return this.customer.datesecond;
     },
     dateformatthird: function dateformatthird(date) {
-      this.customer.datethird = moment__WEBPACK_IMPORTED_MODULE_3___default()(date).format('L');
+      this.customer.datethird = moment__WEBPACK_IMPORTED_MODULE_3___default()(date).format('YYYY-MM-DD');
       return this.customer.datethird;
     },
     dateformatfour: function dateformatfour(date) {
-      this.customer.datefour = moment__WEBPACK_IMPORTED_MODULE_3___default()(date).format('L');
+      this.customer.datefour = moment__WEBPACK_IMPORTED_MODULE_3___default()(date).format('YYYY-MM-DD');
       return this.customer.datefour;
     },
     isActive: function isActive(menuItem) {
@@ -2977,9 +2999,6 @@ __webpack_require__.r(__webpack_exports__);
     datatable: _Datatable_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
     pagination: _Pagination_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
-  created: function created() {
-    this.getCustomers();
-  },
   data: function data() {
     var sortOrders = {};
     var columns = [{
@@ -3052,7 +3071,7 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     configPagination: function configPagination(data) {
-      console.log(data);
+      // console.log(data);
       this.pagination.lastPage = data.last_page;
       this.pagination.currentPage = data.current_page;
       this.pagination.total = data.total;
@@ -3374,23 +3393,23 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   methods: {
     dateformathealth: function dateformathealth(date) {
-      this.customer.dayhealth = moment__WEBPACK_IMPORTED_MODULE_3___default()(date).format('L');
+      this.customer.dayhealth = moment__WEBPACK_IMPORTED_MODULE_3___default()(date).format('YYYY-MM-DD');
       return this.customer.dayhealth;
     },
     dateformatfirst: function dateformatfirst(date) {
-      this.customer.datefirst = moment__WEBPACK_IMPORTED_MODULE_3___default()(date).format('L');
-      return this.customer.datefirst;
+      this.customer.datefirst = moment__WEBPACK_IMPORTED_MODULE_3___default()(date).format('YYYY-MM-DD');
+      return this.customer.datefirst.reverse();
     },
     dateformatsecond: function dateformatsecond(date) {
-      this.customer.datesecond = moment__WEBPACK_IMPORTED_MODULE_3___default()(date).format('L');
+      this.customer.datesecond = moment__WEBPACK_IMPORTED_MODULE_3___default()(date).format('YYYY-MM-DD');
       return this.customer.datesecond;
     },
     dateformatthird: function dateformatthird(date) {
-      this.customer.datethird = moment__WEBPACK_IMPORTED_MODULE_3___default()(date).format('L');
+      this.customer.datethird = moment__WEBPACK_IMPORTED_MODULE_3___default()(date).format('YYYY-MM-DD');
       return this.customer.datethird;
     },
     dateformatfour: function dateformatfour(date) {
-      this.customer.datefour = moment__WEBPACK_IMPORTED_MODULE_3___default()(date).format('L');
+      this.customer.datefour = moment__WEBPACK_IMPORTED_MODULE_3___default()(date).format('YYYY-MM-DD');
       return this.customer.datefour;
     },
     isActive: function isActive(menuItem) {
@@ -3400,11 +3419,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.activeItem = menuItem;
     },
     datedukien: function datedukien(date) {
-      this.customer.dukienthi = moment__WEBPACK_IMPORTED_MODULE_3___default()(date).format("L");
+      this.customer.dukienthi = moment__WEBPACK_IMPORTED_MODULE_3___default()(date).format('YYYY-MM-DD');
       return this.customer.dukienthi;
     },
     customeDate: function customeDate(date) {
-      this.customer.birthday = moment__WEBPACK_IMPORTED_MODULE_3___default()(date).format("L");
+      this.customer.birthday = moment__WEBPACK_IMPORTED_MODULE_3___default()(date).format('YYYY-MM-DD');
       return this.customer.birthday;
     },
     chooseFile: function chooseFile(event) {
@@ -3607,6 +3626,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
 //
 //
 //
@@ -69014,6 +69036,58 @@ var render = function() {
                 1
               )
             ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col-lg-3 col-6" }, [
+              _c(
+                "div",
+                { staticClass: "small-box bg-success" },
+                [
+                  _vm._m(8),
+                  _vm._v(" "),
+                  _vm._m(9),
+                  _vm._v(" "),
+                  _c(
+                    "router-link",
+                    {
+                      staticClass: "small-box-footer",
+                      attrs: { to: "/customers" }
+                    },
+                    [
+                      _vm._v("More info "),
+                      _c("i", { staticClass: "fas fa-arrow-circle-right" })
+                    ]
+                  )
+                ],
+                1
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-lg-3 col-6" }, [
+              _c(
+                "div",
+                { staticClass: "small-box bg-danger" },
+                [
+                  _vm._m(10),
+                  _vm._v(" "),
+                  _vm._m(11),
+                  _vm._v(" "),
+                  _c(
+                    "router-link",
+                    {
+                      staticClass: "small-box-footer",
+                      attrs: { to: "/customers/hocvienthidau" }
+                    },
+                    [
+                      _vm._v("More info "),
+                      _c("i", { staticClass: "fas fa-arrow-circle-right" })
+                    ]
+                  )
+                ],
+                1
+              )
+            ])
           ])
         ])
       ])
@@ -69026,7 +69100,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "inner" }, [
-      _c("h3", [_vm._v("{{}}")]),
+      _c("h3", [_vm._v("150")]),
       _vm._v(" "),
       _c("p", [_vm._v("Danh Sách Học Viên")])
     ])
@@ -69091,6 +69165,42 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "icon" }, [
       _c("i", { staticClass: "fas fa-user-times" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "inner" }, [
+      _c("h3", [_vm._v("150")]),
+      _vm._v(" "),
+      _c("p", [_vm._v("Học Viên Hoàn Thành Học Phí")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "icon" }, [
+      _c("i", { staticClass: "fas fa-users" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "inner" }, [
+      _c("h3", [_vm._v("53")]),
+      _vm._v(" "),
+      _c("p", [_vm._v("Học Viên Nợ Học Phí")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "icon" }, [
+      _c("i", { staticClass: "fas fa-user-check" })
     ])
   }
 ]
@@ -71783,6 +71893,22 @@ var render = function() {
   var _c = _vm._self._c || _h
   return !_vm.client
     ? _c("nav", { staticClass: "pagination" }, [
+        _vm.pagination.prevPageUrl
+          ? _c(
+              "a",
+              {
+                on: {
+                  click: function($event) {
+                    return _vm.$emit("prev")
+                  }
+                }
+              },
+              [_c("i", { staticClass: "fas fa-chevron-circle-left" })]
+            )
+          : _c("a", { attrs: { disabled: true } }, [
+              _c("i", { staticClass: "fas fa-chevron-circle-left" })
+            ]),
+        _vm._v(" "),
         _c("span", { staticClass: "page-stats" }, [
           _vm._v(
             _vm._s(_vm.pagination.from) +
@@ -71792,28 +71918,6 @@ var render = function() {
               _vm._s(_vm.pagination.total)
           )
         ]),
-        _vm._v(" "),
-        _vm.pagination.prevPageUrl
-          ? _c(
-              "a",
-              {
-                staticClass: "button is-small pagination-previous",
-                on: {
-                  click: function($event) {
-                    return _vm.$emit("prev")
-                  }
-                }
-              },
-              [_vm._v("\n        Prev\n    ")]
-            )
-          : _c(
-              "a",
-              {
-                staticClass: "button is-small pagination-previous",
-                attrs: { disabled: true }
-              },
-              [_vm._v("\n       Prev\n    ")]
-            ),
         _vm._v(" "),
         _vm.pagination.nextPageUrl
           ? _c(
@@ -71826,7 +71930,7 @@ var render = function() {
                   }
                 }
               },
-              [_vm._v("\n        Next\n    ")]
+              [_c("i", { staticClass: "fas fa-chevron-circle-right" })]
             )
           : _c(
               "a",
@@ -71834,7 +71938,7 @@ var render = function() {
                 staticClass: "button is-small pagination-next",
                 attrs: { disabled: true }
               },
-              [_vm._v("\n        Next\n    ")]
+              [_c("i", { staticClass: "fas fa-chevron-circle-right" })]
             )
       ])
     : _c("nav", { staticClass: "pagination" }, [
@@ -71848,7 +71952,7 @@ var render = function() {
               _vm._s(_vm.filtered.length) +
               "\n        "
           ),
-          _vm.filtered.length < _vm.pagination.total
+          _vm.filtered.length <= _vm.pagination.total
             ? _c("span", [
                 _vm._v(
                   "(filtered from " +
@@ -71863,23 +71967,27 @@ var render = function() {
           ? _c(
               "a",
               {
-                staticClass: "button is-small pagination-previous",
                 on: {
                   click: function($event) {
                     return _vm.$emit("prev")
                   }
                 }
               },
-              [_vm._v("\n        Prev\n    ")]
+              [_c("i", { staticClass: "fas fa-chevron-circle-right" })]
             )
-          : _c(
-              "a",
-              {
-                staticClass: "button is-small pagination-previous",
-                attrs: { disabled: true }
-              },
-              [_vm._v("\n       Prev\n    ")]
-            ),
+          : _c("a", { attrs: { disabled: true } }, [
+              _c("i", { staticClass: "fas fa-chevron-circle-left" })
+            ]),
+        _vm._v(" "),
+        _c("span", { staticClass: "page-stats" }, [
+          _vm._v(
+            _vm._s(_vm.pagination.from) +
+              " - " +
+              _vm._s(_vm.pagination.to) +
+              " of " +
+              _vm._s(_vm.pagination.total)
+          )
+        ]),
         _vm._v(" "),
         _vm.pagination.nextPage
           ? _c(
@@ -71892,7 +72000,7 @@ var render = function() {
                   }
                 }
               },
-              [_vm._v("\n        Next\n    ")]
+              [_c("i", { staticClass: "fas fa-chevron-circle-right" })]
             )
           : _c(
               "a",
@@ -71900,7 +72008,7 @@ var render = function() {
                 staticClass: "button is-small pagination-next",
                 attrs: { disabled: true }
               },
-              [_vm._v("\n        Next\n    ")]
+              [_c("i", { staticClass: "fas fa-chevron-circle-right" })]
             )
       ])
 }
@@ -92718,7 +92826,8 @@ var user = Object(_helper_auth__WEBPACK_IMPORTED_MODULE_1__["getLocalUser"])();
     isLoginedIn: !!user,
     loading: false,
     auth_error: null,
-    customers: []
+    customers: [],
+    countCustomers: 0
   },
   getters: {
     isLoading: function isLoading(state) {
@@ -92735,6 +92844,9 @@ var user = Object(_helper_auth__WEBPACK_IMPORTED_MODULE_1__["getLocalUser"])();
     },
     customers: function customers(state) {
       return state.customers;
+    },
+    countCustomer: function countCustomer(state) {
+      return state.countCustomers;
     }
   },
   mutations: {
@@ -92761,7 +92873,12 @@ var user = Object(_helper_auth__WEBPACK_IMPORTED_MODULE_1__["getLocalUser"])();
       state.currentUser = null;
     },
     updateCustomer: function updateCustomer(state, payload) {
+      console.log(payload);
       state.customers = payload;
+    },
+    updatecountCustomer: function updatecountCustomer(state, payload) {
+      console.log(payload);
+      state.countCustomer = payload.length;
     }
   },
   actions: {
@@ -92770,7 +92887,6 @@ var user = Object(_helper_auth__WEBPACK_IMPORTED_MODULE_1__["getLocalUser"])();
     },
     getCustomers: function getCustomers(context) {
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/customers").then(function (response) {
-        // console.log(response.data.customers)
         context.commit("updateCustomer", response.data.customers);
       });
     }

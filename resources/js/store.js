@@ -9,6 +9,7 @@ export default {
         loading: false,
         auth_error: null,
         customers: [],
+        countCustomers:0,
 
     },
     getters: {
@@ -28,6 +29,9 @@ export default {
 
             return state.customers;
         },
+        countCustomer(state){
+            return state.countCustomers;
+        }
 
     },
     mutations: {
@@ -54,7 +58,12 @@ export default {
             state.currentUser = null;
         },
         updateCustomer(state, payload) {
+            console.log(payload)
             state.customers = payload;
+        },
+        updatecountCustomer(state,payload){
+            console.log(payload);
+            state.countCustomer = payload.length;
         }
 
     },
@@ -64,7 +73,6 @@ export default {
         },
         getCustomers(context) {
             axios.get("/api/customers").then(response => {
-                // console.log(response.data.customers)
                 context.commit("updateCustomer", response.data.customers);
             });
         }

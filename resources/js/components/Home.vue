@@ -9,7 +9,7 @@
                         <!-- small box -->
                         <div class="small-box bg-info">
                             <div class="inner">
-                                <h3>{{}}</h3>
+                                <h3>150</h3>
 
                                 <p>Danh Sách Học Viên</p>
                             </div>
@@ -69,6 +69,37 @@
                     </div>
                     <!-- ./col -->
                 </div>
+                <div class="row">
+                    <div class="col-lg-3 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-success">
+                            <div class="inner">
+                                <h3>150</h3>
+
+                                <p>Học Viên Hoàn Thành Học Phí</p>
+                            </div>
+                            <div class="icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <router-link to="/customers" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></router-link>
+                        </div>
+                    </div>
+                    <!-- ./col -->
+                    <div class="col-lg-3 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-danger">
+                            <div class="inner">
+                                <h3>53</h3>
+
+                                <p>Học Viên Nợ Học Phí</p>
+                            </div>
+                            <div class="icon">
+                                <i class="fas fa-user-check"></i>
+                            </div>
+                            <router-link to="/customers/hocvienthidau" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></router-link>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -78,6 +109,8 @@
 <script>
 export default {
     name: "home",
+    // props:['customers'],
+
     data() {
         return {
             countcustomers: 0,
@@ -90,16 +123,6 @@ export default {
         //     return all;
         // },
     },
-    methods: {
-      allCustomers(){
-          axios.get("api/customers").then(respones=>{
-              console.log(respones.data.customers);
-          })
-      }
-    },
-    mounted() {
-        this.allCustomers();
-    }
 
 };
 </script>

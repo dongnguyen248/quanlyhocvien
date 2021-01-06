@@ -43,14 +43,11 @@ import Datatable from './Datatable.vue';
 import Pagination from './Pagination.vue';
 export default {
     name: "CustomersList",
-
     components: {
         datatable: Datatable,
         pagination: Pagination
     },
-    created() {
-        this.getCustomers();
-    },
+    
     data() {
         let sortOrders = {};
 
@@ -129,7 +126,7 @@ export default {
                 });
         },
         configPagination(data) {
-            console.log(data);
+            // console.log(data);
             this.pagination.lastPage = data.last_page;
             this.pagination.currentPage = data.current_page;
             this.pagination.total = data.total;
