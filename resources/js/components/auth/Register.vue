@@ -90,7 +90,7 @@ export default {
       axios
         .post("/register", this.$data.user)
         .then((respone) => {
-          console.log(respone.data);
+          // console.log(respone.data);
           this.$router.push("/login");
         })
         .catch((errors) => {

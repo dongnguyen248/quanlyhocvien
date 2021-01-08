@@ -60,7 +60,6 @@ export default {
         updateCustomer(state, payload) {
             state.customers = payload;
             state.countCustomer = payload.length;
-            console.log(payload.length)
 
         },
 

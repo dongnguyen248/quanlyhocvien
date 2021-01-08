@@ -10,22 +10,33 @@
 
             <div class="control">
                 <div class="select">
+                   
                     <select class="form-control" v-model="tableData.length" @change="getCustomers()">
                         <option v-for="(records, index) in perPage" :key="index" :value="records">{{records}}</option>
                     </select>
+                
                 </div>
             </div>
+            <!-- <div class="control mr-3">
+                <div class="select">
+                    <select class="form-control" v-model="tableData.Searchlist" @change="getCustomers()">
+                        <option v-for="(records, index) in keysearch" :key="index" :value="records">{{records}}</option>
+                    </select>
+                </div>
+            </div> -->
         </div>
         <datatable :columns="columns" :sortKey="sortKey" :sortOrders="sortOrders" @sort="sortBy">
-            <tbody>
+            <tbody class="text-center">
                 <tr v-for="customer in customers" :key="customer.id">
                     <td>{{customer.name}}</td>
                     <td>{{customer.CodeCustomer}}</td>
                     <td>{{customer.phone}}</td>
-                    <td class="text-center">
-                        <router-link :to="`/customers/${customer.id}`" class="btn btn-info">Xem thông tin học viên</router-link>
+                    <td>{{customer.statusExam}}</td>
+                    <td>{{customer.needMoney}}</td>
+                    <td >
+                        <router-link :to="`/customers/${customer.id}`" class="btn btn-info"><i class="fas fa-eye"></i></router-link>
                         <span v-if="currentUser.name === customer.createdBy">
-                            <router-link :to="`/customers/edit/${customer.id}`" class="btn btn-primary">Sửa thông tin học viên</router-link>
+                            <router-link :to="`/customers/edit/${customer.id}`" class="btn btn-primary"><i class="fas fa-edit"></i></router-link>
                         </span>
                     </td>
 
@@ -39,8 +50,8 @@
 </template>
 
 <script>
-import Datatable from './Datatable.vue';
-import Pagination from './Pagination.vue';
+import Datatable from '../datatable/Datatable';
+import Pagination from '../datatable/Pagination';
 export default {
     name: "CustomersList",
 
@@ -68,6 +79,16 @@ export default {
                 name: 'phone'
             },
             {
+                // width: '33%',
+                label: 'Tình trạng thi cử',
+                name: 'statusExam'
+            },
+            {
+                // width: '33%',
+                label: 'Tình trạng học phí',
+                name: 'needMoney'
+            },
+            {
                 label: 'Action',
                 //  name: 'Action'
             }
@@ -82,9 +103,11 @@ export default {
             sortKey: 'deadline',
             sortOrders: sortOrders,
             perPage: ['10', '20', '30'],
+            keysearch:['Chưa thi','needpay'],
             tableData: {
                 draw: 0,
                 length: 10,
+                Searchlist:'Chưa thi',
                 search: '',
                 column: 0,
                 dir: 'desc',
@@ -118,7 +141,6 @@ export default {
                     let data = response.data;
                     if (this.tableData.draw == data.draw) {
                         this.customers = data.data.data;
-                        // console.log(this.customers);
                         this.configPagination(data.data);
                     }
                 })
@@ -158,6 +180,9 @@ export default {
 <style scoped>
 thead>tr{
   background-color:  #26a96a;
+}
+.table td{
+    padding: 0.15em !important;
 }
 .sorting{
     text-align: center;

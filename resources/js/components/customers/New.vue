@@ -345,7 +345,7 @@ export default {
                 this.customer.school = '';
             }
             if (res.status === 300) {
-                console.log(res.data.mesg);
+                // console.log(res.data.mesg);
                 this.e(res.data.mesg);
             }
 

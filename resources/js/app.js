@@ -12,6 +12,20 @@ import { initialize } from "./helper/general";
 import common from "./helper/comon";
 import numeral from 'numeral';
 import numFormat from 'vue-filter-number-format';
+import Swal from "sweetalert2";
+const Toast = Swal.mixin({
+    toast: true,
+    position: "top-end",
+    showConfirmButton: false,
+    timer: 2500,
+    timerProgressBar: true,
+    onOpen: toast => {
+        toast.addEventListener("mouseenter", Swal.stopTimer);
+        toast.addEventListener("mouseleave", Swal.resumeTimer);
+    }
+});
+window.Swal = Swal;
+window.Toast = Toast;
 Vue.filter('numFormat', numFormat(numeral));
 Vue.use(axios);
 Vue.mixin(common);

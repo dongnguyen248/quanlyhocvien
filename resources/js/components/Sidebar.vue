@@ -32,21 +32,14 @@
                     </router-link>
                 </li>
                 <li class="nav-item">
-                    <router-link to="/customers/hocvienthidau" class="nav-link">
-                      <i class="fas fa-user-check"></i>
+                    <router-link to="/cars" class="nav-link">
+                      <i class="fas fa-car-side"></i>
                         <p>
-                            Học Viên Thi Đậu
+                            Danh Sách Xe
                         </p>
                     </router-link>
                 </li>
-                <li class="nav-item">
-                    <router-link to="/customers/hocvienthirot" class="nav-link">
-                        <i class="fas fa-user-times"></i>
-                        <p>
-                            Học Viên Thi Rớt
-                        </p>
-                    </router-link>
-                </li>
+               
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

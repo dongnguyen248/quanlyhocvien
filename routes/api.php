@@ -27,4 +27,11 @@ Route::group(['middleware' => 'jwt.auth'], function ($router) {
     Route::get('customers/{id}', 'App\Http\Controllers\CustomerController@get');
     Route::post('customers/new', 'App\Http\Controllers\CustomerController@new');
     Route::post('customers/edit/{id}', 'App\Http\Controllers\CustomerController@editcustomer');
+    Route::get('cars', 'App\Http\Controllers\CarsController@index');
+    Route::get('cars/{id}', 'App\Http\Controllers\CarsController@get');
+    Route::post('cars/new', 'App\Http\Controllers\CarsController@new');
+    Route::post('cars/edit/{id}', 'App\Http\Controllers\CarsController@editCar');
+    Route::delete('cars/delete/{id}', 'App\Http\Controllers\CarsController@delete');
+
+
 });

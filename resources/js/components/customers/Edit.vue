@@ -182,10 +182,12 @@
                         <th>Trạng Thái Thi Cử</th>
                         <td>
                            <select class="form-control" v-model="customer.statusExam">
-                               <option value="Chưa thi" > Chưa thi</option>
+                        <option v-for="(records, index) in keyStatusExam" :key="index" :value="records">{{records}}</option>
+
+                               <!-- <option value="Chưa thi" > Chưa thi</option>
                                <option value="Đậu" > Đậu</option>
                                <option value="Rớt lý thuyết" > Rớt lý thuyết</option>
-                               <option value="Rớt thực hành" > Rớt thực hành</option>
+                               <option value="Rớt thực hành" > Rớt thực hành</option> -->
                            </select>
                         </td>
                     </tr>
@@ -252,10 +254,12 @@ export default {
                 datethird: "",
                 datefour: "",
                 dayhealth: "",
-                statusExam:'',
                 totalMoney:'',
+                statusExam:'Chưa thi',
             },
             errors: null,
+                keyStatusExam:['Chưa thi','Đậu','Rớt lý thuyết','Rớt thực hành'],
+
             form: new FormData(),
         };
     },

@@ -25,13 +25,13 @@ class CustomerController extends Controller
     	    return Customer::select('id','CodeCustomer','name','birthday','phone',
             'address','location','Type','Owner','Facebook','dukienthi',
             'createdBy','photo','email','school','first','datefirst','second',
-            'datesecond','third','datethird','fourth','datefour','healthyMoney')->get();
+            'datesecond','third','datethird','fourth','datefour','healthyMoney','statusExam','needMoney')->get();
     	}
 
         $columns = ['id','CodeCustomer','name','birthday','phone',
         'address','location','Type','Owner','Facebook','dukienthi',
         'createdBy','photo','email','school','first','datefirst','second',
-        'datesecond','third','datethird','fourth','datefour','healthyMoney'];
+        'datesecond','third','datethird','fourth','datefour','healthyMoney','statusExam','needMoney'];
 
         $length = $request->input('length');
         // dd($length);
@@ -42,7 +42,7 @@ class CustomerController extends Controller
         $query = Customer::select('id','CodeCustomer','name','birthday','phone',
         'address','location','Type','Owner','Facebook','dukienthi',
         'createdBy','photo','email','school','first','datefirst','second',
-        'datesecond','third','datethird','fourth','datefour','healthyMoney')->orderBy($columns[$column], $dir);
+        'datesecond','third','datethird','fourth','datefour','healthyMoney','statusExam','needMoney')->orderBy($columns[$column], $dir);
 
         if ($searchValue) {
             $query->where(function($query) use ($searchValue) {

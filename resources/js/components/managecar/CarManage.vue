@@ -3,7 +3,7 @@
     <div class="col-2"></div>
     <div class="col-md-10">
       <div class="card card-default">
-        <div class="card-header text-center">Danh sách học viên</div>
+        <div class="card-header text-center">Tổng Hợp Xe</div>
         <div class="card-body">
           <router-view></router-view>
         </div>
@@ -14,7 +14,7 @@
 </template>
 <script>
 export default {
-  name: "customer-main",
+  name: "cars-main",
   
 };
 </script>

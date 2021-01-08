@@ -113,7 +113,9 @@ export default {
     data() {
         return {
             countcustomers: 0,
-            successfull: 0
+            successfull: 0,
+            failTheory:0,
+            failPractice:0
         }
     },
     methods: {

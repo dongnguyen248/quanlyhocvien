@@ -6,12 +6,15 @@ import NewCustomer from "./components/customers/New.vue";
 import Customer from "./components/customers/View.vue";
 import Edit from "./components/customers/Edit.vue";
 import Register from "./components/auth/Register.vue";
-import Successfull from "./components/customers/Hocvienthidau.vue";
-import Fail from "./components/customers/Hocvienthirot.vue";
+import CarManager from "./components/managecar/CarManage.vue";
+import CarsList from "./components/managecar/List.vue";
+import EditCar from "./components/managecar/Edit.vue";
+import NewCar from "./components/managecar/New.vue";
+
 
 const routes = [{
         path: "/",
-        component: Home,
+        component: Home,    
         meta: {
             requiresAuth: true //the route need authen -> need add meta
         },
@@ -23,6 +26,26 @@ const routes = [{
     {
         path: "/register",
         component: Register
+    },
+    {
+        path: "/cars",
+        component: CarManager,
+        meta: {
+            requiresAuth: true //the route need authen -> need add meta
+        },
+        children: [{
+            path: "/",
+            component: CarsList
+        },
+        {
+            path: "new",
+            component: NewCar
+        },     
+        {
+            path: "edit/:id",
+            component: EditCar
+        },
+    ]
     },
     {
         path: "/customers",
@@ -41,20 +64,11 @@ const routes = [{
             {
                 path: ":id",
                 component: Customer
-            },
-            {
-                path: "hocvienthidau",
-                component: Successfull
-            },
-            {
-                path: "hocvienthirot",
-                component: Fail
-            },
+            },      
             {
                 path: "edit/:id",
                 component: Edit
             },
-
         ]
     }
 ];
