@@ -28,7 +28,7 @@
                     <td>
                         {{getremainTime(car.endDate) + ' ngày'}}
                     </td>
-                    <td v-if="car.baohiem !== 'null'" v-bind:class="(getremainTime(car.baohiem) <10)?'choose-class':'esle-class'">{{ 'Bảo hiểm còn ' + getdatebahiem(car.baohiem) +' .Ngày đóng '+ car.baohiem }}</td>
+                    <td v-if="car.baohiem !== 'null'" v-bind:class="(getdatebahiem(car.baohiem) <10)?'choose-class':'esle-class'">{{ 'Bảo hiểm còn ' + getdatebahiem(car.baohiem) +' .Ngày đóng '+ car.baohiem }}</td>
                     <td v-else></td>
                     <td>{{car.note}}</td>
                     <td v-if=" getremainTime(car.endDate) <10"> <i class="fas fa-times-circle"></i></td>

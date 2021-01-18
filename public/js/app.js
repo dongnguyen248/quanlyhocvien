@@ -73392,7 +73392,7 @@ var render = function() {
                           "td",
                           {
                             class:
-                              _vm.getremainTime(car.baohiem) < 10
+                              _vm.getdatebahiem(car.baohiem) < 10
                                 ? "choose-class"
                                 : "esle-class"
                           },
