@@ -4325,13 +4325,6 @@ __webpack_require__.r(__webpack_exports__);
         }
       });
     },
-    getdatebahiem: function getdatebahiem(bhtime) {
-      var CurrentDate = new Date();
-      bhtime = new Date(bhtime);
-      var diffTime = Math.abs(bhtime - CurrentDate);
-      var diffDaysbh = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-      return diffDaysbh;
-    },
     getremainTime: function getremainTime(endtime) {
       var CurrentDate = new Date();
       endtime = new Date(endtime);
@@ -73392,7 +73385,7 @@ var render = function() {
                           "td",
                           {
                             class:
-                              _vm.getdatebahiem(car.baohiem) < 10
+                              _vm.getremainTime(car.baohiem) < 10
                                 ? "choose-class"
                                 : "esle-class"
                           },
@@ -73400,7 +73393,7 @@ var render = function() {
                             _vm._v(
                               _vm._s(
                                 "Bảo hiểm còn " +
-                                  _vm.getdatebahiem(car.baohiem) +
+                                  _vm.getremainTime(car.baohiem) +
                                   " .Ngày đóng " +
                                   car.baohiem
                               )
