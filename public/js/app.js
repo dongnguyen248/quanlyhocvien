@@ -4061,6 +4061,18 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -4074,7 +4086,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         Center: '',
         LevelCar: '',
         startdate: '',
-        endDate: ''
+        endDate: '',
+        baohiem: '',
+        note: ''
       },
       form: new FormData()
     };
@@ -4092,6 +4106,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     },
     endtime: function endtime(date) {
       return this.car.endtime = moment__WEBPACK_IMPORTED_MODULE_2___default()(date).format('YYYY-MM-DD');
+    },
+    baohiem: function baohiem(date) {
+      return this.car.baohiem = moment__WEBPACK_IMPORTED_MODULE_2___default()(date).format('YYYY-MM-DD');
     },
     createCar: function createCar() {
       var _this2 = this;
@@ -4112,10 +4129,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                 _this2.form.append('endtime', _this2.car.endDate);
 
-                _context.next = 7;
+                _this2.form.append('baohiem', _this2.car.baohiem);
+
+                _this2.form.append('note', _this2.car.note);
+
+                _context.next = 9;
                 return _this2.callApi('post', "/api/cars/edit/".concat(_this2.$route.params.id), _this2.form);
 
-              case 7:
+              case 9:
                 res = _context.sent;
 
                 if (res.status === 200) {
@@ -4128,7 +4149,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   _this2.e(res.data.mesg);
                 }
 
-              case 10:
+              case 12:
               case "end":
                 return _context.stop();
             }
@@ -4156,6 +4177,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_3__);
+//
+//
+//
 //
 //
 //
@@ -4232,6 +4256,12 @@ __webpack_require__.r(__webpack_exports__);
       label: 'Hạn Còn lại ',
       name: 'dateremain'
     }, {
+      label: 'Bảo Hiểm ',
+      name: 'baohiem'
+    }, {
+      label: 'Note',
+      name: 'note'
+    }, {
       label: 'Trạng Thái',
       name: 'status'
     }, {
@@ -4294,6 +4324,13 @@ __webpack_require__.r(__webpack_exports__);
           });
         }
       });
+    },
+    getdatebahiem: function getdatebahiem(bhtime) {
+      var CurrentDate = new Date();
+      bhtime = new Date(bhtime);
+      var diffTime = Math.abs(bhtime - CurrentDate);
+      var diffDaysbh = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+      return diffDaysbh;
     },
     getremainTime: function getremainTime(endtime) {
       var CurrentDate = new Date();
@@ -4418,6 +4455,18 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -4431,7 +4480,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         center: '',
         levelcar: '',
         starttime: '',
-        endtime: ''
+        endtime: '',
+        baohiem: '',
+        note: ''
       },
       form: new FormData()
     };
@@ -4442,6 +4493,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     },
     endtime: function endtime(date) {
       return this.car.endtime = moment__WEBPACK_IMPORTED_MODULE_2___default()(date).format('YYYY-MM-DD');
+    },
+    baohiem: function baohiem(date) {
+      return this.car.baohiem = moment__WEBPACK_IMPORTED_MODULE_2___default()(date).format('YYYY-MM-DD');
     },
     createCar: function createCar() {
       var _this = this;
@@ -4462,10 +4516,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                 _this.form.append('endtime', _this.car.endtime);
 
-                _context.next = 7;
+                _this.form.append('baohiem', _this.car.baohiem);
+
+                _this.form.append('note', _this.car.note);
+
+                _context.next = 9;
                 return _this.callApi('post', '/api/cars/new', _this.form);
 
-              case 7:
+              case 9:
                 res = _context.sent;
 
                 if (res.status === 200) {
@@ -4481,11 +4539,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 }
 
                 if (res.status === 300) {
-                  // console.log(res.data.mesg);
                   _this.e(res.data.mesg);
                 }
 
-              case 10:
+              case 12:
               case "end":
                 return _context.stop();
             }
@@ -73086,6 +73143,60 @@ var render = function() {
                 ],
                 1
               )
+            ]),
+            _vm._v(" "),
+            _c("tr", [
+              _c("th", [_vm._v("Bảo Hiểm")]),
+              _vm._v(" "),
+              _c(
+                "td",
+                [
+                  _c("Datepicker", {
+                    staticClass: "form-control inputdate",
+                    attrs: {
+                      typeable: true,
+                      format: _vm.baohiem,
+                      placeholder: "Ngày hết hạn bảo hiểm"
+                    },
+                    model: {
+                      value: _vm.car.baohiem,
+                      callback: function($$v) {
+                        _vm.$set(_vm.car, "baohiem", $$v)
+                      },
+                      expression: "car.baohiem"
+                    }
+                  })
+                ],
+                1
+              )
+            ]),
+            _vm._v(" "),
+            _c("tr", [
+              _c("th", [_vm._v("Ghi Chú")]),
+              _vm._v(" "),
+              _c("td", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.car.note,
+                      expression: "car.note"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { type: "text", placeholder: "ghi chú " },
+                  domProps: { value: _vm.car.note },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.car, "note", $event.target.value)
+                    }
+                  }
+                })
+              ])
             ])
           ])
         ]
@@ -73275,6 +73386,30 @@ var render = function() {
                           "\n                    "
                       )
                     ]),
+                    _vm._v(" "),
+                    car.baohiem !== "null"
+                      ? _c(
+                          "td",
+                          {
+                            class:
+                              _vm.getremainTime(car.baohiem) < 10
+                                ? "choose-class"
+                                : "esle-class"
+                          },
+                          [
+                            _vm._v(
+                              _vm._s(
+                                "Bảo hiểm còn " +
+                                  _vm.getdatebahiem(car.baohiem) +
+                                  " .Ngày đóng " +
+                                  car.baohiem
+                              )
+                            )
+                          ]
+                        )
+                      : _c("td"),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(car.note))]),
                     _vm._v(" "),
                     _vm.getremainTime(car.endDate) < 10
                       ? _c("td", [
@@ -73508,6 +73643,60 @@ var render = function() {
                 ],
                 1
               )
+            ]),
+            _vm._v(" "),
+            _c("tr", [
+              _c("th", [_vm._v("Bảo Hiểm")]),
+              _vm._v(" "),
+              _c(
+                "td",
+                [
+                  _c("Datepicker", {
+                    staticClass: "form-control inputdate",
+                    attrs: {
+                      typeable: true,
+                      format: _vm.baohiem,
+                      placeholder: "Ngày hết hạn bảo hiểm"
+                    },
+                    model: {
+                      value: _vm.car.baohiem,
+                      callback: function($$v) {
+                        _vm.$set(_vm.car, "baohiem", $$v)
+                      },
+                      expression: "car.baohiem"
+                    }
+                  })
+                ],
+                1
+              )
+            ]),
+            _vm._v(" "),
+            _c("tr", [
+              _c("th", [_vm._v("Ghi Chú")]),
+              _vm._v(" "),
+              _c("td", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.car.note,
+                      expression: "car.note"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { type: "text", placeholder: "ghi chú " },
+                  domProps: { value: _vm.car.note },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.car, "note", $event.target.value)
+                    }
+                  }
+                })
+              ])
             ])
           ])
         ]

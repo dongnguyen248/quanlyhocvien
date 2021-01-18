@@ -28,6 +28,9 @@
                     <td>
                         {{getremainTime(car.endDate) + ' ngày'}}
                     </td>
+                    <td v-if="car.baohiem !== 'null'" v-bind:class="(getremainTime(car.baohiem) <10)?'choose-class':'esle-class'">{{ 'Bảo hiểm còn ' + getdatebahiem(car.baohiem) +' .Ngày đóng '+ car.baohiem }}</td>
+                    <td v-else></td>
+                    <td>{{car.note}}</td>
                     <td v-if=" getremainTime(car.endDate) <10"> <i class="fas fa-times-circle"></i></td>
                     <td v-else><i class="fas fa-check-circle"></i> </td>
                     <td>
@@ -81,6 +84,14 @@ export default {
             {
                 label: 'Hạn Còn lại ',
                 name: 'dateremain'
+            },
+            {
+                label: 'Bảo Hiểm ',
+                name: 'baohiem'
+            },
+            {
+                label: 'Note',
+                name: 'note'
             },
             {
                 label: 'Trạng Thái',
@@ -152,6 +163,13 @@ export default {
                 }
             });
 
+        },
+        getdatebahiem(bhtime) {
+            var CurrentDate = new Date();
+            bhtime = new Date(bhtime);
+            let diffTime = Math.abs(bhtime - CurrentDate);
+            let diffDaysbh = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+            return diffDaysbh;
         },
         getremainTime(endtime) {
             var CurrentDate = new Date();

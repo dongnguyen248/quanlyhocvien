@@ -33,6 +33,18 @@
                     <Datepicker :typeable="true" :format="endtime" class="form-control inputdate" v-model="car.endtime" placeholder="Ngày hết hạn"></Datepicker>
                 </td>
             </tr>
+            <tr>
+                <th>Bảo Hiểm</th>
+                <td>
+                    <Datepicker :typeable="true" :format="baohiem" class="form-control inputdate" v-model="car.baohiem" placeholder="Ngày hết hạn bảo hiểm"></Datepicker>
+                </td>
+            </tr>
+            <tr>
+                <th>Ghi Chú</th>
+                <td>
+                    <input type="text" class="form-control" v-model="car.note" placeholder="ghi chú " />
+                </td>
+            </tr>
         </table>
     </div>
 
@@ -59,7 +71,9 @@ export default {
                 center: '',
                 levelcar: '',
                 starttime: '',
-                endtime: ''
+                endtime: '',
+                baohiem: '',
+                note: ''
             },
             form: new FormData()
 
@@ -72,12 +86,17 @@ export default {
         endtime(date) {
             return this.car.endtime = moment(date).format('YYYY-MM-DD');
         },
+        baohiem(date) {
+            return this.car.baohiem = moment(date).format('YYYY-MM-DD');
+        },
         async createCar() {
             this.form.append('namecar', this.car.namecar);
             this.form.append('center', this.car.center);
             this.form.append('levelcar', this.car.levelcar);
             this.form.append('starttime', this.car.starttime);
             this.form.append('endtime', this.car.endtime);
+            this.form.append('baohiem', this.car.baohiem);
+            this.form.append('note', this.car.note);
 
             const res = await this.callApi('post', '/api/cars/new', this.form);
 
@@ -91,7 +110,6 @@ export default {
                 this.car.endtime = '';
             }
             if (res.status === 300) {
-                // console.log(res.data.mesg);
                 this.e(res.data.mesg);
             }
 

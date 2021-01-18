@@ -33,6 +33,18 @@
                     <Datepicker :typeable="true" :format="endtime" class="form-control inputdate" v-model="car.endDate" placeholder="Ngày hết hạn"></Datepicker>
                 </td>
             </tr>
+             <tr>
+                <th>Bảo Hiểm</th>
+                <td>
+                    <Datepicker :typeable="true" :format="baohiem" class="form-control inputdate" v-model="car.baohiem" placeholder="Ngày hết hạn bảo hiểm"></Datepicker>
+                </td>
+            </tr>
+            <tr>
+                <th>Ghi Chú</th>
+                <td>
+                    <input type="text" class="form-control" v-model="car.note" placeholder="ghi chú " />
+                </td>
+            </tr>
         </table>
     </div>
 
@@ -59,13 +71,15 @@ export default {
                 Center: '',
                 LevelCar: '',
                 startdate: '',
-                endDate: ''
+                endDate: '',
+                baohiem: '',
+                note: ''
             },
             form: new FormData()
 
         }
     },
-      created() {
+    created() {
         axios.get(`/api/cars/${this.$route.params.id}`)
             .then((response) => {
                 this.car = response.data.car;
@@ -78,12 +92,17 @@ export default {
         endtime(date) {
             return this.car.endtime = moment(date).format('YYYY-MM-DD');
         },
+        baohiem(date) {
+            return this.car.baohiem = moment(date).format('YYYY-MM-DD');
+        },
         async createCar() {
             this.form.append('namecar', this.car.namecar);
             this.form.append('center', this.car.Center);
             this.form.append('levelcar', this.car.LevelCar);
             this.form.append('starttime', this.car.startdate);
             this.form.append('endtime', this.car.endDate);
+            this.form.append('baohiem', this.car.baohiem);
+            this.form.append('note', this.car.note);
             const res = await this.callApi('post', `/api/cars/edit/${this.$route.params.id}`, this.form);
             if (res.status === 200) {
                 this.$router.push("/cars");

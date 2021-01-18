@@ -11,12 +11,11 @@ class CarsController extends Controller
     //
     public function index(Request $request){
         $cars =Car::all();
-        // dd($car);
         if ( $request->input('client') ) {
-    	    return Car::select('namecar','Center','LevelCar','startdate','endDate','dateremain','status')->get();
+    	    return Car::select('namecar','Center','LevelCar','startdate','endDate','dateremain','status','baohiem','note')->get();
     	}
 
-        $columns = ['namecar','Center','LevelCar','startdate','endDate','dateremain','status'];
+        $columns = ['namecar','Center','LevelCar','startdate','endDate','dateremain','status','baohiem','note'];
 
         $length = $request->input('length');
         // dd($length);
@@ -24,7 +23,7 @@ class CarsController extends Controller
         $dir = $request->input('dir');
         $searchValue = $request->input('search');
 
-        $query = Car::select('id','namecar','Center','LevelCar','startdate','endDate')->where('status','=',1)->orderBy($columns[$column], $dir);
+        $query = Car::select('id','namecar','Center','LevelCar','startdate','endDate','baohiem','note')->where('status','=',1)->orderBy($columns[$column], $dir);
 
         if ($searchValue) {
             $query->where(function($query) use ($searchValue) {
@@ -43,6 +42,8 @@ class CarsController extends Controller
             'LevelCar'=>$request['levelcar'],
             'startdate'=>$request['starttime'],
             'endDate'=>$request['endtime'],
+            'baohiem'=>$request['baohiem'],
+            'note'=>$request['note'],
            
         ]);
     }
@@ -61,6 +62,8 @@ class CarsController extends Controller
             $car->LevelCar= $request['levelcar'];
             $car->startdate= $request['starttime'];
             $car->endDate= $request['endtime'];
+            $car->baohiem= $request['baohiem'];
+            $car->note= $request['note'];
             $car->save();
             return response()->json(['msg'=>'update successfull']);
     }
